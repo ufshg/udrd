@@ -1,0 +1,18 @@
+{
+  "name": "node-setting",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ExodiusStudios.comment-anchors",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "seatonjiang.gitmoji-vscode",
+        "streetsidesoftware.code-spell-checker",
+      ]
+    }
+  }
+}

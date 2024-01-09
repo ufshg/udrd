@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+        "ExodiusStudios.comment-anchors",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "seatonjiang.gitmoji-vscode",
+        "streetsidesoftware.code-spell-checker",
+  ]
+}
