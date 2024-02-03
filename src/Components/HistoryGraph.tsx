@@ -4,7 +4,7 @@ import type { TierRange } from "src/@types/tier";
 import { convertNumTier } from "src/utils/tier";
 
 export type HistoryGraphProps = {
-  data: Array<{ x: Date; y: TierRange; id: number }>;
+  data: { x: Date; y: TierRange; id: number }[];
 };
 
 export const HistoryGraph = ({ data }: HistoryGraphProps) => {
@@ -53,7 +53,8 @@ export const HistoryGraph = ({ data }: HistoryGraphProps) => {
         text: "Tier",
         rotate: 0,
       },
-      forceNiceScale: true,
+      min: Math.min(...data.map((item) => item.y)),
+      max: Math.max(...data.map((item) => item.y)),
       labels: {
         formatter: convertNumTier,
       },
