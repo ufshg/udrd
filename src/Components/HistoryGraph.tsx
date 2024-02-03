@@ -1,35 +1,13 @@
-import { convertNumTier } from "src/utils/tier";
-import { TierRange } from "../@types/tier";
-import { getRandomInt } from "src/utils/number";
-import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
+import Chart from "react-apexcharts";
+import type { TierRange } from "src/@types/tier";
+import { convertNumTier } from "src/utils/tier";
 
-const getExample = (): { x: Date; y: TierRange; id: number }[] => {
-  // TODO: Replace This with AJAX Logic
-  const exampleData = [];
-  let curr_date = new Date();
-  let curr_tier: TierRange = 10;
-  for (let idx = 0; idx < 20; idx++) {
-    curr_date = new Date(curr_date.getTime() + getRandomInt(2, 45) * 60000);
-    curr_tier += (-1) ** getRandomInt(0, 2);
-    if (curr_tier < 0) {
-      curr_tier = 0;
-    }
-    if (curr_tier > 29) {
-      curr_tier = 29;
-    }
-    exampleData.push({
-      x: curr_date,
-      y: curr_tier as TierRange,
-      id: getRandomInt(1, 32000),
-    });
-  }
-  return exampleData;
+export type HistoryGraphProps = {
+  data: Array<{ x: Date; y: TierRange; id: number }>;
 };
 
-const data = getExample();
-
-export const HistoryGraph = () => {
+export const HistoryGraph = ({ data }: HistoryGraphProps) => {
   const series = [
     {
       name: "푼 문제",
@@ -107,7 +85,7 @@ export const HistoryGraph = () => {
   };
 
   return (
-    <div>
+    <div className="chart-container chart-container-style">
       <Chart options={options} series={series} type="line" />
     </div>
   );
