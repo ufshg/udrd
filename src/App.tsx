@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { HistoryGraph } from "./Components/HistoryGraph";
+import { convertUserSolvingHistoryToHistoryGraphData } from "./utils/dataConversion";
+import { generateRandomUserSolvingHistory } from "./utils/number";
 import reactLogo from "./assets/react.svg";
+import { useState } from "react";
 import viteLogo from "/vite.svg";
 import "./normalize.css";
 import "./App.css";
 import "./Reset2024.css";
+
+const userSolvingHistory = generateRandomUserSolvingHistory();
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,6 +28,9 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <HistoryGraph
+          data={convertUserSolvingHistoryToHistoryGraphData(userSolvingHistory)}
+        />
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
